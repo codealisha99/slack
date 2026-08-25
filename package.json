@@ -1,0 +1,27 @@
+{
+  "name": "slacki-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Slack Clone - Turborepo monorepo (Next.js full-stack)",
+  "packageManager": "pnpm@10.30.3",
+  "engines": {
+    "node": ">=18"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "type-check": "turbo type-check",
+    "clean": "turbo clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "turbo": "^2.5.4",
+    "typescript": "^5.8.3"
+  }
+}
