@@ -1,0 +1,13 @@
+{
+  "name": "@slacki/ui",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": {
+    "lucide-react": "^0.555.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
