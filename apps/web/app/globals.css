@@ -1,0 +1,82 @@
+@import "tailwindcss";
+@import "stream-chat-react/dist/css/v2/index.css";
+
+:root {
+  --slack-aubergine: #350d36;
+  --slack-aubergine-hover: #4a154b;
+  --slack-aubergine-active: #1164a3;
+  --slack-green: #2bac76;
+  --slack-border: #e2e2e2;
+  --slack-sidebar-bg: #350d36;
+  --slack-sidebar-hover: rgba(255, 255, 255, 0.08);
+  --slack-sidebar-active: #1164a3;
+  --slack-sidebar-text: rgba(255, 255, 255, 0.7);
+  --slack-sidebar-text-active: #ffffff;
+  --bg: #ffffff;
+  --bg-subtle: #f8f8f8;
+  --bg-muted: #f3f3f3;
+  --fg: #1d1c1d;
+  --fg-muted: #616061;
+  --fg-subtle: #8b8b8b;
+  --border: #e0e0e0;
+  --border-strong: #d1d1d1;
+  --accent: #1264a3;
+  --accent-hover: #0b4a8a;
+  --accent-soft: #e8f5fa;
+  --success: #007a5a;
+  --destructive: #cd2553;
+  --radius: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+}
+
+* { scrollbar-width: thin; scrollbar-color: rgba(0, 0, 0, 0.15) transparent; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px; line-height: 1.5; overflow-x: hidden;
+}
+
+/* Focus ring — a11y */
+*:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; border-radius: 2px; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+
+/* Stream Chat — professional overrides */
+.str-chat { --str-chat__primary-color: var(--accent); font-family: inherit !important; }
+.str-chat__container { background: var(--bg) !important; }
+.str-chat__main-panel { background: var(--bg) !important; }
+.str-chat__list { background: var(--bg) !important; padding: 0 !important; }
+.str-chat__message-list { background: var(--bg) !important; }
+.str-chat__message-simple { padding: 4px 16px !important; margin: 0 !important; }
+.str-chat__message-simple:hover { background: var(--bg-subtle) !important; }
+.str-chat__message-text-inner { background: transparent !important; border: none !important; padding: 0 !important; }
+.str-chat__message-simple__actions { border: 1px solid var(--border) !important; border-radius: var(--radius-lg) !important; box-shadow: var(--shadow) !important; background: var(--bg) !important; }
+.str-chat__message-input { background: var(--bg) !important; border-top: 1px solid var(--border) !important; padding: 12px 16px 16px !important; }
+.str-chat__message-textarea-container { border: 1px solid var(--border-strong) !important; border-radius: var(--radius-lg) !important; background: var(--bg) !important; transition: border-color 0.15s, box-shadow 0.15s; }
+.str-chat__message-textarea-container:focus-within { border-color: var(--fg) !important; box-shadow: 0 0 0 1px var(--fg) !important; }
+.str-chat__textarea textarea { font-size: 15px !important; line-height: 22px !important; padding: 10px 12px !important; }
+.str-chat__send-button { color: var(--accent) !important; }
+.str-chat__thread { border-left: 1px solid var(--border) !important; background: var(--bg-subtle) !important; }
+.str-chat__thread-header { background: var(--bg) !important; border-bottom: 1px solid var(--border) !important; font-weight: 700 !important; }
+.str-chat__typing-indicator { background: var(--bg) !important; border-top: 1px solid var(--border) !important; font-size: 13px !important; color: var(--fg-muted) !important; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.15); border-radius: 999px; border: 2px solid transparent; background-clip: content-box; }
+*::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.25); background-clip: content-box; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
