@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { UserButton, useUser } from "@clerk/nextjs";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useStreamChat } from "@/hooks/useStreamChat";
@@ -9,14 +10,17 @@ import PageLoader from "./PageLoader";
 import { Chat, Channel, ChannelList, MessageList, MessageInput, Thread, Window } from "stream-chat-react";
 import { HashIcon, PlusIcon, UsersIcon, Search, Settings, HelpCircle, MoreHorizontal, ChevronDown, Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
-import CreateChannelModal from "./CreateChannelModal";
+import dynamic from "next/dynamic";
 import CustomChannelPreview from "./CustomChannelPreview";
 import UsersList from "./UsersList";
 import CustomChannelHeader from "./CustomChannelHeader";
-import CommandPalette from "./CommandPalette";
-import KeyboardHelp from "./KeyboardHelp";
+import OfflineBanner from "./OfflineBanner";
 import { ChannelSkeleton } from "./ui/skeleton";
 import type { Channel as ChannelType } from "stream-chat";
+
+const CreateChannelModal = dynamic(() => import("./CreateChannelModal"), { ssr: false });
+const CommandPalette = dynamic(() => import("./CommandPalette"), { ssr: false });
+const KeyboardHelp = dynamic(() => import("./KeyboardHelp"), { ssr: false });
 
 export default function HomeClient() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
@@ -78,6 +82,7 @@ export default function HomeClient() {
 
   return (
     <div className="chat-wrapper">
+      <OfflineBanner />
       {/* Top bar */}
       <div className="workspace-topbar">
         <div className="workspace-topbar__left">
@@ -123,9 +128,9 @@ export default function HomeClient() {
                   <ChevronDown className="w-4 h-4 workspace-name__chevron" />
                 </button>
                 <div className="flex items-center gap-1">
-                  <button className="w-7 h-7 rounded-md bg-white/10 border border-white/10 flex items-center justify-center text-white/80 hover:bg-white/15 transition-colors">
+                  <Link href="/settings" className="w-7 h-7 rounded-md bg-white/10 border border-white/10 flex items-center justify-center text-white/80 hover:bg-white/15 transition-colors">
                     <Settings className="w-3.5 h-3.5" />
-                  </button>
+                  </Link>
                   <UserButton
                     appearance={{
                       elements: {

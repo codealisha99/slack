@@ -9,6 +9,12 @@ import Providers from "./providers";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
+export const viewport = {
+  themeColor: "#350d36",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   title: "Slacki — Where Work Happens",
   description: "Professional workspace for teams — real-time messaging, channels, and video calls. Built with Next.js, Clerk, and Stream.",
@@ -16,7 +22,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Slacki — Professional Workspace",
     description: "Real-time messaging, organized channels, and crystal-clear video.",
+    type: "website",
   },
+  twitter: { card: "summary_large_image", title: "Slacki — Where Work Happens" },
 };
 
 export const dynamic = "force-dynamic";
