@@ -89,7 +89,7 @@ export default function HomeClient() {
           <button className="lg:hidden w-8 h-8 rounded-md bg-white/10 border border-white/10 flex items-center justify-center text-white/90 hover:bg-white/15 transition-colors" onClick={() => setIsSidebarOpen((v) => !v)} aria-label="Toggle sidebar">
             {isSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
-          <button className="hidden lg:flex items-center gap-2 text-white/90 hover:text-white transition-colors">
+          <button className="hidden lg:flex items-center gap-2 text-white/90 hover:text-white transition-colors" aria-label="Workspace home">
             <span className="w-7 h-7 rounded-md bg-white/15 border border-white/10 flex items-center justify-center text-xs font-bold">S</span>
             <span className="text-sm font-semibold">Slacki</span>
           </button>
@@ -99,7 +99,7 @@ export default function HomeClient() {
           </span>
         </div>
 
-        <button className="workspace-topbar__search" onClick={() => setIsCommandOpen(true)}>
+        <button className="workspace-topbar__search" onClick={() => setIsCommandOpen(true)} aria-label="Open command palette (⌘K)">
           <Search className="w-3.5 h-3.5 opacity-70" />
           <span>Search by channel or member</span>
           <span className="ml-auto hidden sm:inline-flex items-center gap-1 text-[11px] opacity-60 border border-white/20 rounded px-1.5 py-0.5">⌘ K</span>
@@ -123,7 +123,7 @@ export default function HomeClient() {
           <div className={`str-chat__channel-list ${isSidebarOpen ? "str-chat__channel-list--open !translate-x-0 z-20 shadow-2xl" : ""}`}>
             <div className="team-channel-list">
               <div className="team-channel-list__header">
-                <button className="workspace-name">
+                <button className="workspace-name" aria-label="Workspace menu">
                   <span className="workspace-name__title">Acme Workspace</span>
                   <ChevronDown className="w-4 h-4 workspace-name__chevron" />
                 </button>
@@ -144,7 +144,7 @@ export default function HomeClient() {
 
               <div className="team-channel-list__content">
                 <div className="create-channel-section">
-                  <button onClick={() => setIsCreateModalOpen(true)} className="create-channel-btn">
+                  <button onClick={() => setIsCreateModalOpen(true)} className="create-channel-btn" aria-label="Create new channel">
                     <PlusIcon className="w-3.5 h-3.5" />
                     <span>New channel</span>
                     <MoreHorizontal className="w-3.5 h-3.5 ml-auto opacity-60" />
