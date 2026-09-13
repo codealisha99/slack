@@ -3,14 +3,19 @@
 import { useAuth } from "@clerk/nextjs";
 import { useEffect } from "react";
 
-// No-op today — kept for parity with legacy AuthProvider (which attached axios interceptor)
-// In Next.js we use fetch + Clerk auth() server-side; client fetch uses cookies automatically.
-// We keep the component so Providers tree stays identical.
+// Preview-safe: don't call useAuth outside ClerkProvider
 export default function AuthProvider({ children }: { children: React.ReactNode }) {
+  const isPreview =
+    !process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY ||
+    process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY.includes("dummy");
+
+  if (isPreview) return <>{children}</>;
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { getToken, isSignedIn } = useAuth();
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    // Optionally prime token cache — no axios needed
     if (isSignedIn) getToken().catch(() => {});
   }, [getToken, isSignedIn]);
 
